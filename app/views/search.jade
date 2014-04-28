@@ -1,0 +1,44 @@
+.header
+  ul.nav.nav-pills.pull-right
+    li.active
+      a(ng-href='#') Home
+    li
+      a(ng-href='#') Search
+    li
+      a(ng-href='#') Options
+  h3.text-muted GrooveFishPilot
+.row.marketing
+  form.form-inline(role='form')
+    .form-group
+      input.form-control(type='text', placeholder='Title', ng-model='title')
+    .form-group
+      input.form-control(type='text', placeholder='Artist', ng-model='artist')
+    .form-group
+      input.form-control(type='number', placeholder='Max', ng-model='max', style='width:80px')
+    button.btn.btn-default(type='submit', ng-click='pull(title,artist,max)') Search
+    button.btn.btn-primary(type='button') Download
+  // h4 Result Songs:
+.row.marketing(ng-show='songs')
+  table.table
+    thead
+      tr
+        th #
+        th Title
+        th Artist
+        th SongId
+        th
+        // th Stream
+    tbody
+      tr(ng-repeat="song in songs")
+        td {{ $index+1 }}
+        td {{ song.SongName }}
+        td {{ song.ArtistName }}
+        td {{ song.SongID }}
+        td
+          input(type='checkbox')
+          // a(ng-href="{{ song.Stream }}", ng-show='song.Stream')
+          //  span.center-block.glyphicon.glyphicon-save
+.footer
+  p
+    span.glyphicon.glyphicon-heart
+    | from Vash The Stampede
